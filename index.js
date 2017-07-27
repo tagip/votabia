@@ -10,11 +10,17 @@ var round = 1;
 var timer = 0;
 
 client.get("votabia_status", function (err, reply) {
+  if (err) {
+    console.error(err);
+  }
   if (reply) {
     status = reply.toString();
   }
 });
 client.get("votabia_timer", function (err, reply) {
+  if (err) {
+    console.error(err);
+  }
   if (reply && !isNaN(reply)) {
     timer = parseFloat(reply);
   }
@@ -25,8 +31,16 @@ function run() {
   var minutes = Math.floor(timer / 60);
   var seconds = Math.floor(timer - minutes * 60);
   io.emit('pomodoro', {status: status, timer: minutes + ':' + (seconds < 10 ? '0' : '') + seconds});
-  client.set("votabia_timer", timer);
-  client.set("votabia_status", status);
+  client.set("votabia_timer", timer, function(err) {
+    if (err) {
+      console.error(err);
+    }
+  });
+  client.set("votabia_status", status, function(err) {
+    if (err) {
+      console.error(err);
+    }
+  });
 }
 
 function setPause() {
