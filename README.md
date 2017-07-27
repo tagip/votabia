@@ -6,5 +6,5 @@ Centralized Pomodoro server emitting on WS. It needs a Redis server to store dat
 
 ```
 npm install
-REDIS="//127.0.0.1:6379" node index.js
+REDIS="//127.0.0.1:6379" PORT=8012 node index.js
 ```

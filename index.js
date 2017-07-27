@@ -1,4 +1,4 @@
-var io = require('socket.io')(8012);
+var io = require('socket.io')(process.env.PORT || 8012);
 var redis = require("redis");
 var client = redis.createClient(process.env.REDIS);
 
