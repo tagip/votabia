@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.18.1",
     "redis": "^2.7.1",
     "socket.io": "^2.0.3"
   }
